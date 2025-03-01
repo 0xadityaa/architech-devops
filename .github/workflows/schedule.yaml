@@ -1,3 +1,5 @@
+name: Schedule Pipeline # Added missing workflow name
+
 on:
   schedule:
     - cron: "*/2 * * * *"
@@ -6,5 +8,8 @@ jobs:
   scheduled_cron:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code # Added checkout step
+        uses: actions/checkout@v2
+
       - name: Echo current time
         run: echo "The current server time is $(date)"
