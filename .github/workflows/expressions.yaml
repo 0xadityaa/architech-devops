@@ -14,16 +14,16 @@ jobs:
           echo "StartsWith Hello: ${{ startsWith('Hello World', 'Hello') }}"
           echo "EndsWith Actions: ${{ endsWith('GitHub Actions', 'Actions') }}"
 
-      # Join Function
-      - name: Join Function
+      # Format String (instead of join)
+      - name: Format String
         run: |
-          echo "${{ join(['Hello', 'GitHub', 'Actions'], ' ') }}"
+          echo "Hello GitHub Actions"
 
-      # Math Functions
-      - name: Math Operations
+      # Simple Comparison (instead of math)
+      - name: Comparison Operations
         run: |
-          echo "Maximum value: ${{ max(3, 5, 2, 4) }}"
-          echo "Minimum value: ${{ min(3, 5, 2, 4) }}"
+          echo "Greater than: ${{ 5 > 3 }}"
+          echo "Less than: ${{ 2 < 4 }}"
 
       # Status Check Functions
       - name: Status Check Functions
