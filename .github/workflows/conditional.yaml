@@ -1,0 +1,14 @@
+name: Conditional Workflow
+on: [push]
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    if: github.repository == 'octo-org/octo-repo-prod'
+    steps:
+      - name: Hello World
+        run: echo "This is the octo-repo-prod"
+  else-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "This is some other repository."
