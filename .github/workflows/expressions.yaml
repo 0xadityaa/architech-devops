@@ -2,32 +2,26 @@ name: Expressions Workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      number:
-        description: "Enter a number to evaluate"
-        required: true
-        type: string
 
 jobs:
   expression-demo:
     runs-on: ubuntu-latest
     steps:
-      # Normal Function Examples
+      # String Functions
       - name: String Functions
         run: |
-          echo "Uppercase: ${{ toUpper('hello') }}"
-          echo "Lowercase: ${{ toLower('WORLD') }}"
-          echo "Replace: ${{ replace('Hello World', 'World', 'GitHub') }}"
+          echo "Contains World: ${{ contains('Hello World', 'World') }}"
+          echo "StartsWith Hello: ${{ startsWith('Hello World', 'Hello') }}"
+          echo "EndsWith Actions: ${{ endsWith('GitHub Actions', 'Actions') }}"
 
-      # Format Function
-      - name: Format Function
+      # Join Function
+      - name: Join Function
         run: |
-          echo "${{ format('Hello {0} {1}!', 'GitHub', 'Actions') }}"
+          echo "${{ join(['Hello', 'GitHub', 'Actions'], ' ') }}"
 
       # Math Functions
       - name: Math Operations
         run: |
-          echo "Input number plus 10: ${{ fromJSON(inputs.number) + 10 }}"
           echo "Maximum value: ${{ max(3, 5, 2, 4) }}"
           echo "Minimum value: ${{ min(3, 5, 2, 4) }}"
 
@@ -40,5 +34,5 @@ jobs:
 
       # Conditional Step
       - name: Conditional Step
-        if: ${{ contains('Hello World', 'World') }}
+        if: contains('Hello World', 'World')
         run: echo "Condition was true!"
