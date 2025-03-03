@@ -30,9 +30,21 @@ jobs:
         run: |
           echo "Success: ${{ success() }}"
           echo "Always: ${{ always() }}"
-          echo "Failure: ${{ failure() }}"
+          echo "Cancel: ${{ cancelled() }}"
+
+      # Status Check using Environment Variables
+      - name: Status Check with Environment Variables
+        run: |
+          echo "GitHub Ref: $GITHUB_REF"
+          echo "GitHub Actor: $GITHUB_ACTOR"
+          echo "GitHub Repository: $GITHUB_REPOSITORY"
 
       # Conditional Step
       - name: Conditional Step
         if: contains('Hello World', 'World')
         run: echo "Condition was true!"
+
+      # Conditional Step with Status Functions
+      - name: Only Run if Previous Steps Succeeded
+        if: success()
+        run: echo "All previous steps succeeded!"
