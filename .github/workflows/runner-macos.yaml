@@ -14,7 +14,7 @@ jobs:
 
       - name: Create a Swift file
         run: |
-          echo "print("Hello, from MacOS!")" > hello.swift
+          echo 'print("Hello, from MacOS!")' > hello.swift
 
       - name: Install dependencies
         run: |
